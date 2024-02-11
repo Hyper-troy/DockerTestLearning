@@ -30,3 +30,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/test-docker:latest
+
+	- name: Run Docker Container Locally
+      	  run: |
+            docker run -d --name my-app-container -p  8000:8000 ${{ steps.docker_build.outputs.image }}
